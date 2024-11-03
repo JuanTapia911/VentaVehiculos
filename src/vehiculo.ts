@@ -21,3 +21,13 @@ constructor(id:number, marca:string, linea:string, referencia:string, modelo:num
 
 }
 }
+
+export class Marcas {
+        name: string = "";
+        cuenta: number = 0;
+    
+        constructor(n:string){
+            this.name = n;
+            this.cuenta = 1;
+        }
+    }

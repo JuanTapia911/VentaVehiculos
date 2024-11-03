@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Vehiculo } from '../../vehiculo';
+import { Vehiculo, Marcas } from '../../vehiculo';
 import { dataVehiculos } from '../../dataVehiculos';
 import { VehiculosService } from './vehiculos.service';
 
@@ -16,6 +16,20 @@ export class VehiculosComponent implements OnInit {
       this.vehiculos=vehiculos;
     });
   }
+  contarMarcas(): Marcas[] {
+    const contadorMarcas: Marcas[] = [];
+
+    for (const vehiculo of this.vehiculos) {
+        const marcaExistente = contadorMarcas.find(m => m.name === vehiculo.marca);
+        
+        if (marcaExistente) {
+            marcaExistente.cuenta++;
+        } else {
+          contadorMarcas.push(new Marcas(vehiculo.marca)); 
+        }
+    }
+    return contadorMarcas;
+ }
   ngOnInit() {
     this.getVehiculosList();
   }
