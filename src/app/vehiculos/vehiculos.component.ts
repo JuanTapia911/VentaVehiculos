@@ -10,10 +10,13 @@ import { VehiculosService } from './vehiculos.service';
 })
 export class VehiculosComponent implements OnInit {
   vehiculos:Array<Vehiculo> = [];
+  contadorMarcas: Marcas[] = [];
+  
   constructor(private vehiculosService:VehiculosService) { }
   getVehiculosList() {
     this.vehiculosService.getVehiculos().subscribe(vehiculos => {
       this.vehiculos=vehiculos;
+      this.contadorMarcas = this.contarMarcas();
     });
   }
   contarMarcas(): Marcas[] {
